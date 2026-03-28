@@ -12,17 +12,19 @@ struct SongListView: View {
     @StateObject private var viewModel = SongListViewModel()
     
     var body: some View {
-        List(viewModel.songs) { song in
-            NavigationLink(destination: SongDetailView(song: song)) {
-                VStack(alignment: .leading) {
-                    Text(song.trackName)
-                        .font(.headline)
-                    
-                    Text(song.artistName)
-                        .font(.subheadline)
+        NavigationStack {
+            List(viewModel.songs) { song in
+                NavigationLink(destination: SongDetailView(song: song)) {
+                    VStack(alignment: .leading) {
+                        Text(song.trackName)
+                            .font(.headline)
+                        
+                        Text(song.artistName)
+                            .font(.subheadline)
+                    }
                 }
             }
-            .navigationTitle("Taylor's Version")
+            .navigationTitle("Taylor's Playlist")
         }
         .task {
             await viewModel.loadSongs()

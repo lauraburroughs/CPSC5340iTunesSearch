@@ -21,7 +21,7 @@ struct SongDetailView: View {
             Text(song.artistName)
                 .font(.title2)
             
-            Text("Album: \(song.collectionName)")
+            Text("Album: "); Text(song.collectionName).italic()
                 .font(.body)
             
         }
