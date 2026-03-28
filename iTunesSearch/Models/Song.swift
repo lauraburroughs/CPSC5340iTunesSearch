@@ -14,7 +14,7 @@ struct Song: Identifiable, Codable {
     
     let trackName: String
     let artistName: String
-    let collecitonName: String
+    let collectionName: String
     let artworkUrl100: String
     let previewURL: String?
 
