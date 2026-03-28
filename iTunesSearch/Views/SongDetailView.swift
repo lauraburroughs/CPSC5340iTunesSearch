@@ -26,18 +26,19 @@ struct SongDetailView: View {
             
             VStack(spacing: 8) {
                 Text(song.trackName)
-                    .font(.title)
+                    .font(.headline)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                 
                 Text(song.artistName)
-                    .font(.title3)
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
                 
                 Text(song.collectionName)
                     .font(.body)
                     .italic()
                     .foregroundColor(.secondary)
+                
             }
         }
         .padding()
