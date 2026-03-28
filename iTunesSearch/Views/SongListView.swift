@@ -12,8 +12,8 @@ struct SongListView: View {
     @StateObject private var viewModel = SongListViewModel()
     
     var body: some View {
-        NavigationStack {
-            List(viewModel.songs) { song in
+        List(viewModel.songs) { song in
+            NavigationLink(destination: SongDetailView(song: song)) {
                 VStack(alignment: .leading) {
                     Text(song.trackName)
                         .font(.headline)
