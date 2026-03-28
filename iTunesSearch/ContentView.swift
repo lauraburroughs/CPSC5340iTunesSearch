@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  iTunesSearch
 //
-//  Created by Laura Burroughs on 3/28/26.
+//  Created by Laura Burroughs on 3/28/26
 //
 
 import SwiftUI
