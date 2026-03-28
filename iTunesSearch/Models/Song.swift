@@ -12,6 +12,11 @@ struct Song: Identifiable, Codable {
     
     var id: Int { trackId }
     
+    // Requesting higher-res images for the detail view by changing the artwork URL pattern
+    var artworkUrlLarge: String {
+        artworkUrl100.replacingOccurrences(of: "100x100bb", with: "600x600bb")
+    }
+    
     let trackName: String
     let artistName: String
     let collectionName: String

@@ -14,19 +14,35 @@ struct SongDetailView: View {
     var body: some View {
         VStack(spacing: 20) {
             
-            Text(song.trackName)
-                .font(.title)
-                .fontWeight(.bold)
+            AsyncImage(url: URL(string: song.artworkUrlLarge)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 220, height: 220)
+            .cornerRadius(12)
             
-            Text(song.artistName)
-                .font(.title2)
-            
-            Text("Album: "); Text(song.collectionName).italic()
-                .font(.body)
-            
+            VStack(spacing: 8) {
+                Text(song.trackName)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                
+                Text(song.artistName)
+                    .font(.title3)
+                    .foregroundColor(.secondary)
+                
+                Text(song.collectionName)
+                    .font(.body)
+                    .italic()
+                    .foregroundColor(.secondary)
+            }
         }
         .padding()
         .navigationTitle("Song Details")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
