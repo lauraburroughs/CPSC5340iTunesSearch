@@ -44,4 +44,4 @@ This project follows the **MVVM (Model-View-ViewModel)** pattern:
 
 ## API Used
 
-This app uses the public iTunes Search API: https://itunes.apple.com/search?parameterkeyvalue
+This app uses the public iTunes Search API: https://performance-partners.apple.com/search-api 
