@@ -13,24 +13,41 @@ struct SongListView: View {
     
     var body: some View {
         NavigationStack {
-            List(viewModel.songs) { song in
-                NavigationLink(destination: SongDetailView(song: song)) {
-                    VStack(alignment: .leading) {
-                        Text(song.trackName)
-                            .font(.headline)
-                        
-                        Text(song.artistName)
-                            .font(.subheadline)
+            List {
+                ForEach(viewModel.songs) { song in
+                    NavigationLink(destination: SongDetailView(song: song)) {
+                        HStack {
+                            AsyncImage(url: URL(string: song.artworkUrl100)) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 60, height: 60)
+                            .cornerRadius(8)
+                            .clipped()
+                            
+                            VStack(alignment: .leading) {
+                                Text(song.trackName)
+                                    .font(.headline)
+                                
+                                Text(song.artistName)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
                     }
                 }
             }
             .navigationTitle("Taylor's Playlist")
-        }
-        .task {
-            await viewModel.loadSongs()
+            .task {
+                await viewModel.loadSongs()
+            }
         }
     }
 }
+
 
 #Preview {
     SongListView()
