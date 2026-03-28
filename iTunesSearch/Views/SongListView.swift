@@ -12,13 +12,18 @@ struct SongListView: View {
     @StateObject private var viewModel = SongListViewModel()
     
     var body: some View {
-        List(viewModel.songs) { song in
-            VStack(alignment: .leading) {
-                Text(song.trackName)
-                    .font(.subheadline)
+        NavigationStack {
+            List(viewModel.songs) { song in
+                VStack(alignment: .leading) {
+                    Text(song.trackName)
+                        .font(.headline)
+                    
+                    Text(song.artistName)
+                        .font(.subheadline)
+                }
             }
+            .navigationTitle("Taylor's Version")
         }
-        
         .task {
             await viewModel.loadSongs()
         }
